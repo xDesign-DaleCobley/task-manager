@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  firebase-emulator:
+    build: .
+    ports:
+      - "4000:4000" # Emulator UI
+      - "8080:8080" # Firestore
+    environment:
+      - FIRESTORE_EMULATOR_HOST=0.0.0.0:8080
+      - FIREBASE_PROJECT_ID=my-local-test-project
+    volumes:
+      - .:/app
+
+volumes:
+  firebase-data:
